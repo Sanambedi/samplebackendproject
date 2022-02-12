@@ -22,7 +22,10 @@ app.use(express.urlencoded({
 
 //cookies and file middlewares
 app.use(cookieParser())
-app.use(filUpload())
+app.use(filUpload({
+    useTempFiles:true,
+    tempFileDir: "/temp/"
+}))
 
 
 //morgan middleware
