@@ -23,7 +23,4 @@ exports.customRole = (...roles) => {
         }
         next()
     }
-    if(req.user.role === 'admin'){
-        next()
-    }
 }
