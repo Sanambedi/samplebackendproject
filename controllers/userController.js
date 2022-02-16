@@ -7,6 +7,7 @@ const cloudinary = require('cloudinary');
 const mailHelper = require("../utils/emailHelper");
 const crypto = require('crypto');
 const { findByIdAndUpdate } = require("../models/user");
+const user = require("../models/user");
 exports.signup = BigPromise(async(/* err, */req,res,next)=>{
 
     if(!req.files){
@@ -181,7 +182,6 @@ exports.changePassword = BigPromise(async(req,res,next)=>{
 
     cookieToken(user,res)
 });
-
 exports.updateUserDetails = BigPromise(async(req,res,next)=>{
     
     const newData = {
@@ -206,14 +206,23 @@ exports.updateUserDetails = BigPromise(async(req,res,next)=>{
         }
     }
     
-    const user = await User.findByIdAndUpdate(req.user.id,newData,{
+    await User.findByIdAndUpdate(req.user.id,newData,{
         new: true,
         runValidators: true,
         useFindAndModify: false
     })
     res.status(200).json({
         success: true,
+        
     })
 
 
+});
+exports.adminAllUser = BigPromise(async(req,res,next)=>{
+    const users = await User.find()
+
+    res.status(200).json({
+        success: true,
+        users
+    })
 });
