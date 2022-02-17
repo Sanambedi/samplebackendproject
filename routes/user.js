@@ -1,7 +1,21 @@
 const express = require('express');
 const router = express.Router()
 
-const { signup,login,logout, forgotPassword, passwordReset,getLoggedInUserDetails, changePassword, updateUserDetails, adminAllUser, managerAllUser, admingetOneUser, adminUpdateOneUserDetails, adminDeleteOneUser } = require('../controllers/userController');
+const { 
+    signup,
+    login,
+    logout,
+    forgotPassword, 
+    passwordReset,
+    getLoggedInUserDetails,
+    changePassword,
+    updateUserDetails,
+    adminAllUser, 
+    managerAllUser, 
+    admingetOneUser, 
+    adminUpdateOneUserDetails, 
+    adminDeleteOneUser 
+} = require('../controllers/userController');
 const { isLoggedIn, customRole } = require('../middlewares/user');
 
 router.route('/signup').post(signup);
