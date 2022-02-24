@@ -2,12 +2,9 @@ const User = require("../models/user");
 const BigPromise = require('../middlewares/bigPromise')
 const CustomError = require("../utils/customError");
 const cookieToken = require("../utils/cookieToken");
-const fileUpload = require('express-fileupload');
 const cloudinary = require('cloudinary');
 const mailHelper = require("../utils/emailHelper");
 const crypto = require('crypto');
-const { findByIdAndUpdate } = require("../models/user");
-const user = require("../models/user");
 exports.signup = BigPromise(async(/* err, */req,res,next)=>{
 
     if(!req.files){
